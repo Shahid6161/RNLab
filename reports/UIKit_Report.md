@@ -3,7 +3,7 @@
 ## Overview
 The UIKit assignment focuses on building a library of reusable UI components and demonstrating their usage in a screen. This module showcases how to create flexible, customizable components in React Native and manage their state within a parent component.
 
-<img width="1080" height="2400" alt="Screenshot_1770887462" src="https://github.com/user-attachments/assets/5d9d880b-b691-4961-ae9d-cdbf53d9f9dc" />
+<img width="300" alt="Screenshot_1770887462" src="https://github.com/user-attachments/assets/5d9d880b-b691-4961-ae9d-cdbf53d9f9dc" />
 
 
 ## File Structure

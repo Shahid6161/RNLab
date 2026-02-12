@@ -3,7 +3,7 @@
 ## Overview
 The Layout Master assignment is designed to practice and master Flexbox layouts in React Native. It demonstrates how to build complex, responsive grid structures without relying on hardcoded dimensions or absolute positioning, using a custom layout utility component.
 
-<img width="1080" height="2400" alt="Screenshot_1770887466" src="https://github.com/user-attachments/assets/b867f1d2-fbf7-44c8-a887-4a7f61294309" />
+<img width="300" alt="Screenshot_1770887466" src="https://github.com/user-attachments/assets/b867f1d2-fbf7-44c8-a887-4a7f61294309" />
 
 
 ## File Structure
