@@ -3,6 +3,9 @@
 ## Overview
 The InstaFeed assignment is a mini-clone of the Instagram main feed. It demonstrates the implementation of a scrollable list with heterogenous content types (Stories, Posts) and simulates a real-world social media feed UI.
 
+<img width="1080" height="2400" alt="Screenshot_1770887469" src="https://github.com/user-attachments/assets/99900745-8bcd-444f-9c6d-8e91910ea042" />
+
+
 ## File Structure
 - **Screen**: `src/Assignments/InstaFeed/InstaFeedScreen.tsx`
 - **Components**: `src/Assignments/InstaFeed/components/`
