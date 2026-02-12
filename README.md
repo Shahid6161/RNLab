@@ -40,6 +40,9 @@ npm run ios
 
 The project is structured into independent assignments, accessible via the main navigation screen.
 
+<img width="1080" height="2400" alt="Screenshot_1770887458" src="https://github.com/user-attachments/assets/b37eb600-3e36-4a53-977e-9d82e044cab0" />
+
+
 ### 1. [UIKit Assignment](./reports/UIKit_Report.md)
 A comprehensive collection of reusable UI components.
 - **Key Features**: Custom Inputs with validation, variable Button styles, Checkboxes, Radio Buttons, and Tabs.
