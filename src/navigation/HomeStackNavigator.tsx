@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import FeedScreen from '../screens/FeedScreen';
-import PostDetailsScreen from '../screens/PostDetailsScreen';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -14,11 +14,6 @@ export default function HomeStackNavigator() {
                 options={{
                     headerShown: false
                 }}
-            />
-            <Stack.Screen
-                name="PostDetails"
-                component={PostDetailsScreen}
-                options={{ title: 'Post' }}
             />
         </Stack.Navigator>
     );
