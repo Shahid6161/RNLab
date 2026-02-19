@@ -39,13 +39,24 @@ See the project in action: [Watch Demo Video](https://drive.google.com/file/d/1t
 
 
 
-<img width="250" alt="Screenshot_1771491606" src="https://github.com/user-attachments/assets/19f9b2a4-3d42-40d8-9d69-ed13ad96adf0" />
-
-<img width="250" alt="Screenshot_1771491611" src="https://github.com/user-attachments/assets/b781ac81-4ea2-4fdc-aa9b-9c99ca98fcec" />
-
-<img width="250" alt="Screenshot_1771491615" src="https://github.com/user-attachments/assets/c70422c2-d19c-4d58-bf3d-7172f9f091bb" />
-
-<img width="250" alt="Screenshot_1771491618" src="https://github.com/user-attachments/assets/9ffe617d-7045-41f9-85a4-570db581633d" />
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/19f9b2a4-3d42-40d8-9d69-ed13ad96adf0" width="250" alt="Screenshot_1771491606" />
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/b781ac81-4ea2-4fdc-aa9b-9c99ca98fcec" width="250" alt="Screenshot_1771491611" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/c70422c2-d19c-4d58-bf3d-7172f9f091bb" width="250" alt="Screenshot_1771491615" />
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/9ffe617d-7045-41f9-85a4-570db581633d" width="250" alt="Screenshot_1771491618" />
+    </td>
+  </tr>
+</table>
 
 
 
