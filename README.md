@@ -4,7 +4,7 @@
 This project is a React Native implementation of an Instagram-like application. It focuses on creating a high-fidelity clone of the core Instagram feed experience, including stories, posts, interaction UI, and profile management.
 
 ## Demo Video
-See the project in action: [Watch Demo Video](https://drive.google.com/file/d/1odPW8kdRQCb31g7WZdZUmZrsXYfA9Wt-/view?usp=sharing)
+See the project in action: [Watch Demo Video](https://drive.google.com/file/d/1t7coTtumPqimhSPxLFKeYY47IRcodhCc/view?usp=drive_link)
 
 ## Features
 
@@ -36,6 +36,15 @@ See the project in action: [Watch Demo Video](https://drive.google.com/file/d/1o
 -   **TypeScript**: Fully typed codebase for reliability and maintainability.
 -   **Safe Area Handling**: Uses `react-native-safe-area-context` for perfect layout on all devices.
 -   **Vector Icons**: Uses `lucide-react-native` for crisp, scalable icons.
+
+<img width="300" alt="Screenshot_1771491606" src="https://github.com/user-attachments/assets/19f9b2a4-3d42-40d8-9d69-ed13ad96adf0" />
+
+<img width="300" alt="Screenshot_1771491611" src="https://github.com/user-attachments/assets/b781ac81-4ea2-4fdc-aa9b-9c99ca98fcec" />
+
+<img width="300" alt="Screenshot_1771491615" src="https://github.com/user-attachments/assets/c70422c2-d19c-4d58-bf3d-7172f9f091bb" />
+
+<img width="300" alt="Screenshot_1771491618" src="https://github.com/user-attachments/assets/9ffe617d-7045-41f9-85a4-570db581633d" />
+
 
 ## Getting Started
 
