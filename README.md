@@ -45,7 +45,7 @@ See the project in action: [Watch Demo Video](https://drive.google.com/file/d/1O
       <img src="https://github.com/user-attachments/assets/19f9b2a4-3d42-40d8-9d69-ed13ad96adf0" width="250" alt="Screenshot_1771491606" />
     </td>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/b781ac81-4ea2-4fdc-aa9b-9c99ca98fcec" width="250" alt="Screenshot_1771491611" />
+      <img src="https://github.com/user-attachments/assets/300fb7d8-c100-4910-85dc-0e4165eb3d1e" width="250" alt="Screenshot_1771491611" />
     </td>
   </tr>
   <tr>
