@@ -1,68 +1,60 @@
-# RN Lab - React Native Assignments
+# Instagram Clone with React Native
 
 ## Overview
-RN Lab is a React Native project designed to demonstrate various implementation patterns and UI components through specific assignments. It serves as a playground for learning and mastering React Native concepts, including component design, layout systems, and list rendering.
+This project is a React Native implementation of an Instagram-like application. It focuses on creating a high-fidelity clone of the core Instagram feed experience, including stories, posts, interaction UI, and profile management.
 
 ## Demo Video
 See the project in action: [Watch Demo Video](https://drive.google.com/file/d/1odPW8kdRQCb31g7WZdZUmZrsXYfA9Wt-/view?usp=sharing)
 
+## Features
+
+### 🏠 Feed & Home Screen
+-   **Infinite Scroll Feed**: Smooth vertical scrolling for posts.
+-   **Stories Rail**: Horizontal scrolling list for user stories at the top.
+-   **Post Interactions**:
+    -   Like, Comment, Share, and Save buttons.
+    -   Double-tap to like animation.
+-   **Custom Header**: Instagram-styled header with logo and activity icons.
+
+### 📝 Post Details
+-   **Detailed View**: Tap on any post to see it in detail.
+-   **Comments Section**:
+    -   Fetches real comments from an API (`jsonplaceholder`).
+    -   Displays user avatars, names, and timestamps.
+-   **Dynamic Header**: Transparent/padded header respecting safe area insets.
+
+### 👤 Profile
+-   **User Data**: Fetches and displays user profile information (Name, Bio, Company, etc.) from an API.
+-   **Drawer Integration**: Access the profile via the bottom tab or the side drawer.
+
+### 🧭 Navigation
+-   **Hybrid Navigation**: Combines **Bottom Tab Navigation** (Home, Search, Reels, Activity, Profile) with **Drawer Navigation**.
+-   **Seamless Transitions**: Smooth transitions between Feed and Post Details.
+
+## Technical Highlights
+-   **Service Layer**: API calls are encapsulated in `FeedService.ts` and `UserService.ts` for clean architecture.
+-   **TypeScript**: Fully typed codebase for reliability and maintainability.
+-   **Safe Area Handling**: Uses `react-native-safe-area-context` for perfect layout on all devices.
+-   **Vector Icons**: Uses `lucide-react-native` for crisp, scalable icons.
 
 ## Getting Started
 
-To run this project locally, follow these steps:
+To run this project, you need to have the React Native development environment set up.
 
-### 1. Install Dependencies
-Navigate to the project root and install the required packages:
+👉 [**React Native Environment Setup Guide**](https://reactnative.dev/docs/environment-setup)
 
-```sh
-npm install
-```
+Once your environment is ready:
 
-### 2. Start Metro
-Start the Metro bundler:
+1.  **Install Dependencies**:
+    ```sh
+    npm install
+    ```
 
-```sh
-npm start
-```
+2.  **Start Metro Bundler**:
+    ```sh
+    npm start
+    ```
 
-### 3. Run the App
-Open a new terminal and run the app on your desired simulator/emulator:
-
-**Android:**
-```sh
-npm run android
-```
-
-**iOS:**
-```sh
-npm run ios
-```
-
-*(Note: For iOS, ensure you have run `bundle install` and `bundle exec pod install` inside the `ios` directory if native dependencies have changed.)*
-
-## Modules & Assignments
-
-The project is structured into independent assignments, accessible via the main navigation screen.
-
-<img width="300" alt="Screenshot_1770887458" src="https://github.com/user-attachments/assets/b37eb600-3e36-4a53-977e-9d82e044cab0" />
-
-
-### 1. [UIKit Assignment](./reports/UIKit_Report.md)
-A comprehensive collection of reusable UI components.
-- **Key Features**: Custom Inputs with validation, variable Button styles, Checkboxes, Radio Buttons, and Tabs.
-- **Learnings**: Component reusability, prop interfaces, and local state management.
-
-### 2. [Layout Master Assignment](./reports/LayoutMaster_Report.md)
-A deep dive into Flexbox layouts using a utility-first approach.
-- **Key Features**: Complex grid layouts, nested flex containers, and responsive design patterns using a custom `FlexBlock` component.
-- **Learnings**: Mastering `flexDirection`, `justifyContent`, and `alignItems`.
-
-### 3. [InstaFeed Assignment](./reports/InstaFeed_Report.md)
-A functioning clone of a social media feed.
-- **Key Features**: Scrollable feed with Stories rail, Post items with interactions, and simulated bottom navigation.
-- **Learnings**: Efficient `FlatList` usage, `ListHeaderComponent`, and handling heterogeneous lists.
-
-## Learn More
-- [React Native Documentation](https://reactnative.dev/docs/getting-started)
-- [React Navigation](https://reactnavigation.org/)
-- [Lucide React Native Icons](https://lucide.dev/guide/packages/lucide-react-native)
+3.  **Run on Simulator/Device**:
+    -   **Android**: `npm run android`
+    -   **iOS**: `npm run ios`

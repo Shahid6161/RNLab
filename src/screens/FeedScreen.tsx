@@ -1,21 +1,38 @@
-import React, { useCallback } from 'react';
-import { View, FlatList, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import {
-    Heart,
-    Send,
-    Home,
-    Search,
-    PlusCircle
-} from 'lucide-react-native';
-import { PostCard } from './components/PostCard';
-import { StoryCircle } from './components/StoryCircle';
-import { POSTS, STORIES, Post } from './data/feedData';
+import React, { useEffect, useState, useCallback } from 'react';
+import { View, FlatList, StyleSheet, ActivityIndicator, TouchableOpacity, Text, SafeAreaView, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { Heart, Send, Home, Search, PlusCircle } from 'lucide-react-native';
+import { PostCard } from '../components/PostCard';
+import { StoryCircle } from '../components/StoryCircle';
+import { STORIES, Post as FeedPost } from '../data/feedData';
+import { FeedService, UiPost } from '../services/FeedService';
 
-export default function InstaFeedScreen() {
-    const renderPost = useCallback(({ item }: { item: Post }) => {
-        return <PostCard post={item} />;
+export default function FeedScreen() {
+    const [posts, setPosts] = useState<UiPost[]>([]);
+    const [loading, setLoading] = useState(true);
+    const navigation = useNavigation<any>();
+
+    useEffect(() => {
+        FeedService.getPosts()
+            .then(data => {
+                setPosts(data);
+                setLoading(false);
+            })
+            .catch(error => {
+                setLoading(false);
+            });
     }, []);
+
+    const renderPost = useCallback(({ item }: { item: UiPost }) => {
+        return (
+            <TouchableOpacity
+                activeOpacity={0.9}
+                onPress={() => navigation.navigate('PostDetails', { post: item })}
+            >
+                <PostCard post={item} />
+            </TouchableOpacity>
+        );
+    }, [navigation]);
 
     const renderStories = () => (
         <View style={styles.storiesContainer}>
@@ -46,26 +63,24 @@ export default function InstaFeedScreen() {
         </View>
     );
 
+    if (loading) {
+        return (
+            <View style={styles.center}>
+                <ActivityIndicator size="large" color="#000" />
+            </View>
+        );
+    }
+
     return (
         <SafeAreaView style={styles.container}>
             {renderHeader()}
             <FlatList
-                data={POSTS}
+                data={posts}
                 renderItem={renderPost}
                 keyExtractor={item => item.id}
                 ListHeaderComponent={renderStories}
                 showsVerticalScrollIndicator={false}
             />
-
-            <View style={styles.bottomTab}>
-                <Home size={28} color="#000" />
-                <Search size={28} color="#000" />
-                <PlusCircle size={28} color="#000" />
-                <Heart size={28} color="#000" />
-                <View style={styles.profileTab}>
-                    <View style={{ width: 24, height: 24, borderRadius: 12, backgroundColor: '#ccc' }} />
-                </View>
-            </View>
         </SafeAreaView>
     );
 }
@@ -74,6 +89,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
+    },
+    center: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     header: {
         flexDirection: 'row',
@@ -98,24 +118,6 @@ const styles = StyleSheet.create({
     headerIcon: {
         marginLeft: 20,
     },
-    storiesContainer: {
-        paddingVertical: 10,
-        borderBottomWidth: 1,
-        borderBottomColor: '#E5E5EA',
-    },
-    storiesContent: {
-        paddingLeft: 10,
-        paddingRight: 10,
-    },
-    bottomTab: {
-        height: 50,
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        borderTopWidth: 1,
-        borderTopColor: '#E5E5EA',
-        paddingBottom: 5,
-    },
     badge: {
         position: 'absolute',
         top: -5,
@@ -132,13 +134,13 @@ const styles = StyleSheet.create({
         fontSize: 10,
         fontWeight: 'bold',
     },
-    profileTab: {
-        width: 28,
-        height: 28,
-        borderRadius: 14,
-        borderWidth: 1,
-        borderColor: '#ccc',
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
+    storiesContainer: {
+        paddingVertical: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#E5E5EA',
+    },
+    storiesContent: {
+        paddingLeft: 10,
+        paddingRight: 10,
+    },
 });
