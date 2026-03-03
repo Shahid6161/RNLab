@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { useTheme } from '../features/theme/useTheme';
 
 import { UserService, User } from '../services/UserService';
 
 export default function ProfileScreen() {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
+    const { colorScheme } = useTheme();
 
     useEffect(() => {
         UserService.getUser('1')
@@ -18,37 +20,37 @@ export default function ProfileScreen() {
 
     if (loading) {
         return (
-            <View style={styles.center}>
-                <ActivityIndicator size="large" color="#000" />
+            <View style={[styles.center, { backgroundColor: colorScheme.background }]}>
+                <ActivityIndicator size="large" color={colorScheme.text} />
             </View>
         );
     }
 
     if (!user) {
         return (
-            <View style={styles.center}>
-                <Text>Failed to load profile</Text>
+            <View style={[styles.center, { backgroundColor: colorScheme.background }]}>
+                <Text style={{ color: colorScheme.text }}>Failed to load profile</Text>
             </View>
         );
     }
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: colorScheme.background }]}>
             <View style={styles.header}>
-                <View style={styles.avatarPlaceholder}>
-                    <Text style={styles.avatarText}>{user.name.charAt(0)}</Text>
+                <View style={[styles.avatarPlaceholder, { backgroundColor: colorScheme.border }]}>
+                    <Text style={[styles.avatarText, { color: colorScheme.text }]}>{user.name.charAt(0)}</Text>
                 </View>
-                <Text style={styles.name}>{user.name}</Text>
-                <Text style={styles.company}>{user.company.name}</Text>
-                <Text style={styles.bio}>{user.company.catchPhrase}</Text>
+                <Text style={[styles.name, { color: colorScheme.text }]}>{user.name}</Text>
+                <Text style={[styles.company, { color: colorScheme.text }]}>{user.company.name}</Text>
+                <Text style={[styles.bio, { color: colorScheme.text }]}>{user.company.catchPhrase}</Text>
             </View>
 
             <View style={styles.infoSection}>
-                <Text style={styles.label}>Email</Text>
-                <Text style={styles.value}>{user.email}</Text>
+                <Text style={[styles.label, { color: colorScheme.text }]}>Email</Text>
+                <Text style={[styles.value, { color: colorScheme.text }]}>{user.email}</Text>
 
-                <Text style={styles.label}>Website</Text>
-                <Text style={styles.value}>{user.website}</Text>
+                <Text style={[styles.label, { color: colorScheme.text }]}>Website</Text>
+                <Text style={[styles.value, { color: colorScheme.text }]}>{user.website}</Text>
             </View>
         </View>
     );

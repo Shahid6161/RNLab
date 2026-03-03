@@ -5,17 +5,24 @@ import { TouchableOpacity } from 'react-native';
 import HomeStackNavigator from './HomeStackNavigator';
 import { PlaceholderScreen } from '../screens/PlaceholderScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import { useTheme } from '../features/theme/useTheme';
 
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator({ navigation }: any) {
+    const { colorScheme } = useTheme();
+
     return (
         <Tab.Navigator
             screenOptions={{
                 headerShown: false,
                 tabBarShowLabel: false,
-                tabBarActiveTintColor: '#000',
+                tabBarActiveTintColor: colorScheme.text,
                 tabBarInactiveTintColor: '#666',
+                tabBarStyle: {
+                    backgroundColor: colorScheme.background,
+                    borderTopColor: colorScheme.border,
+                },
             }}>
             <Tab.Screen
                 name="HomeTab"
@@ -51,10 +58,12 @@ export default function BottomTabNavigator({ navigation }: any) {
                 options={{
                     headerShown: true,
                     title: 'Profile',
+                    headerStyle: { backgroundColor: colorScheme.headerBackground },
+                    headerTintColor: colorScheme.text,
                     tabBarIcon: ({ color, size }) => <User color={color} size={size} />,
                     headerRight: () => (
                         <TouchableOpacity onPress={() => navigation.openDrawer()} style={{ marginRight: 15 }}>
-                            <Menu color="#000" size={24} />
+                            <Menu color={colorScheme.text} size={24} />
                         </TouchableOpacity>
                     ),
                 }}

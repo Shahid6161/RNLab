@@ -8,6 +8,14 @@ See the project in action: [Watch Demo Video](https://drive.google.com/file/d/1O
 
 ## Features
 
+### 🔄 Week 3 Architecture & State (New!)
+- **State Management**: Integrated `@reduxjs/toolkit` and `react-redux` for global state.
+- **Feature-Based Architecture**: Transitioned to a scalable folder structure (`src/features`, `src/store`).
+- **Custom Hooks**:
+  - `useFeed`: Manages asynchronous API calls and feed state using `createAsyncThunk`.
+  - `useTheme`: Manages a fully dynamic Dark / Light Mode.
+- **Dynamic Theming**: All screens and navigators (including Drawers and Bottom Tabs) smoothly transition based on the Redux theme state.
+
 ### 🏠 Feed & Home Screen
 -   **Infinite Scroll Feed**: Smooth vertical scrolling for posts.
 -   **Stories Rail**: Horizontal scrolling list for user stories at the top.
@@ -33,6 +41,7 @@ See the project in action: [Watch Demo Video](https://drive.google.com/file/d/1O
 
 ## Technical Highlights
 -   **Service Layer**: API calls are encapsulated in `FeedService.ts` and `UserService.ts` for clean architecture.
+-   **Redux Architecture**: `src/features/` handles domain-specific logic, scaling the app for complex feature sets.
 -   **TypeScript**: Fully typed codebase for reliability and maintainability.
 -   **Safe Area Handling**: Uses `react-native-safe-area-context` for perfect layout on all devices.
 -   **Vector Icons**: Uses `lucide-react-native` for crisp, scalable icons.

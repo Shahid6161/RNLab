@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
+import { useTheme } from '../features/theme/useTheme';
 
 interface StoryCircleProps {
     username: string;
@@ -8,14 +9,16 @@ interface StoryCircleProps {
 }
 
 export const StoryCircle: React.FC<StoryCircleProps> = ({ username, imageUri }) => {
+    const { colorScheme } = useTheme();
+
     return (
         <View style={styles.container}>
             <View style={styles.borderContainer}>
-                <View style={styles.whiteSpacing}>
+                <View style={[styles.whiteSpacing, { backgroundColor: colorScheme.background }]}>
                     <Image source={{ uri: imageUri }} style={styles.image} />
                 </View>
             </View>
-            <Text style={styles.username} numberOfLines={1}>
+            <Text style={[styles.username, { color: colorScheme.text }]} numberOfLines={1}>
                 {username}
             </Text>
         </View>

@@ -1,27 +1,22 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { View, FlatList, StyleSheet, ActivityIndicator, TouchableOpacity, Text, SafeAreaView, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Heart, Send, Home, Search, PlusCircle } from 'lucide-react-native';
+import { Heart, Send, Moon, Sun } from 'lucide-react-native';
 import { PostCard } from '../components/PostCard';
 import { StoryCircle } from '../components/StoryCircle';
-import { STORIES, Post as FeedPost } from '../data/feedData';
-import { FeedService, UiPost } from '../services/FeedService';
+import { STORIES } from '../data/feedData';
+import { UiPost } from '../services/FeedService';
+import { useFeed } from '../features/feed/useFeed';
+import { useTheme } from '../features/theme/useTheme';
 
 export default function FeedScreen() {
-    const [posts, setPosts] = useState<UiPost[]>([]);
-    const [loading, setLoading] = useState(true);
     const navigation = useNavigation<any>();
+    const { posts, loading, loadPosts } = useFeed();
+    const { isDarkMode, toggleTheme, colorScheme } = useTheme();
 
     useEffect(() => {
-        FeedService.getPosts()
-            .then(data => {
-                setPosts(data);
-                setLoading(false);
-            })
-            .catch(error => {
-                setLoading(false);
-            });
-    }, []);
+        loadPosts();
+    }, [loadPosts]);
 
     const renderPost = useCallback(({ item }: { item: UiPost }) => {
         return (
@@ -49,30 +44,33 @@ export default function FeedScreen() {
     );
 
     const renderHeader = () => (
-        <View style={styles.header}>
-            <Text style={styles.logoText}>Instagram</Text>
+        <View style={[styles.header, { backgroundColor: colorScheme.headerBackground, borderBottomColor: colorScheme.border }]}>
+            <Text style={[styles.logoText, { color: colorScheme.text }]}>Instagram</Text>
             <View style={styles.headerRight}>
-                <TouchableOpacity style={styles.headerIcon}>
-                    <Heart size={26} color="#000" />
+                <TouchableOpacity onPress={toggleTheme} style={styles.headerIcon}>
+                    {isDarkMode ? <Sun size={26} color={colorScheme.text} /> : <Moon size={26} color={colorScheme.text} />}
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.headerIcon}>
-                    <Send size={26} color="#000" />
+                    <Heart size={26} color={colorScheme.text} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.headerIcon}>
+                    <Send size={26} color={colorScheme.text} />
                     <View style={styles.badge}><Text style={styles.badgeText}>1</Text></View>
                 </TouchableOpacity>
             </View>
         </View>
     );
 
-    if (loading) {
+    if (loading && posts.length === 0) {
         return (
-            <View style={styles.center}>
-                <ActivityIndicator size="large" color="#000" />
+            <View style={[styles.center, { backgroundColor: colorScheme.background }]}>
+                <ActivityIndicator size="large" color={colorScheme.text} />
             </View>
         );
     }
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={[styles.container, { backgroundColor: colorScheme.background }]}>
             {renderHeader()}
             <FlatList
                 data={posts}

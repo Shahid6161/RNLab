@@ -9,6 +9,7 @@ import {
     PlusCircle
 } from 'lucide-react-native';
 import { Post, CURRENT_USER } from '../data/feedData';
+import { useTheme } from '../features/theme/useTheme';
 
 interface PostCardProps {
     post: Post;
@@ -17,16 +18,18 @@ interface PostCardProps {
 const { width } = Dimensions.get('window');
 
 export const PostCard: React.FC<PostCardProps> = ({ post }) => {
+    const { colorScheme } = useTheme();
+
     return (
         <View style={styles.container}>
             {/* Header */}
             <View style={styles.header}>
                 <View style={styles.userInfo}>
                     <Image source={{ uri: post.userAvatar }} style={styles.avatar} />
-                    <Text style={styles.username}>{post.username}</Text>
+                    <Text style={[styles.username, { color: colorScheme.text }]}>{post.username}</Text>
                 </View>
                 <TouchableOpacity>
-                    <MoreHorizontal size={20} color="#000" />
+                    <MoreHorizontal size={20} color={colorScheme.text} />
                 </TouchableOpacity>
             </View>
 
@@ -37,30 +40,30 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
             <View style={styles.actionBar}>
                 <View style={styles.leftActions}>
                     <TouchableOpacity style={styles.actionIcon}>
-                        <Heart size={28} color="#000" />
+                        <Heart size={28} color={colorScheme.text} />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.actionIcon}>
-                        <MessageCircle size={26} color="#000" />
+                        <MessageCircle size={26} color={colorScheme.text} />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.actionIcon}>
-                        <Send size={26} color="#000" />
+                        <Send size={26} color={colorScheme.text} />
                     </TouchableOpacity>
                 </View>
                 <TouchableOpacity>
-                    <Bookmark size={26} color="#000" />
+                    <Bookmark size={26} color={colorScheme.text} />
                 </TouchableOpacity>
             </View>
 
             {/* Likes */}
             <View style={styles.padding}>
-                <Text style={styles.likesText}>
+                <Text style={[styles.likesText, { color: colorScheme.text }]}>
                     Les gusta a <Text style={styles.bold}>Neoland</Text> y <Text style={styles.bold}>más personas</Text>
                 </Text>
             </View>
 
             {/* Caption */}
             <View style={styles.padding}>
-                <Text style={styles.caption}>
+                <Text style={[styles.caption, { color: colorScheme.text }]}>
                     <Text style={styles.bold}>{post.username}</Text> {post.caption}
                 </Text>
             </View>

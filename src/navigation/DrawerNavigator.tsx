@@ -2,12 +2,26 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import BottomTabNavigator from './BottomTabNavigator';
 import ProfileScreen from '../screens/ProfileScreen';
+import { useTheme } from '../features/theme/useTheme';
 
 const Drawer = createDrawerNavigator();
 
 export default function DrawerNavigator() {
+    const { colorScheme } = useTheme();
+
     return (
-        <Drawer.Navigator screenOptions={{ headerShown: false }}>
+        <Drawer.Navigator
+            screenOptions={{
+                headerShown: false,
+                drawerStyle: {
+                    backgroundColor: colorScheme.background,
+                },
+                drawerActiveTintColor: colorScheme.text,
+                drawerInactiveTintColor: '#666',
+                drawerLabelStyle: {
+                    color: colorScheme.text,
+                }
+            }}>
             <Drawer.Screen
                 name="Main"
                 component={BottomTabNavigator}
