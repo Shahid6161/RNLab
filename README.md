@@ -4,7 +4,7 @@
 This project is a React Native implementation of an Instagram-like application. It focuses on creating a high-fidelity clone of the core Instagram feed experience, including stories, posts, interaction UI, and profile management.
 
 ## Demo Video
-See the project in action: [Watch Demo Video](https://drive.google.com/file/d/1O88BjBBwvzAeVzTlC3ZNWpaphnOc_X4P/view?usp=sharing)
+See the project in action: [Watch Demo Video](https://drive.google.com/file/d/1xA4WotMLl90eNWyDEZHs8oiEVEIFBjxC/view?usp=sharing)
 
 ## Features
 
@@ -51,10 +51,10 @@ See the project in action: [Watch Demo Video](https://drive.google.com/file/d/1O
 <table>
   <tr>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/19f9b2a4-3d42-40d8-9d69-ed13ad96adf0" width="250" alt="Screenshot_1771491606" />
+      <img width="250" alt="Screenshot_1772531299" src="https://github.com/user-attachments/assets/80ba818f-1eed-48b9-b9ce-938ecf2889c4" />
     </td>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/300fb7d8-c100-4910-85dc-0e4165eb3d1e" width="250" alt="Screenshot_1771491611" />
+    <img width="250" alt="Screenshot_1772532004" src="https://github.com/user-attachments/assets/86c8371f-febe-4ce1-97e2-670a40e4c59b" />
     </td>
   </tr>
   <tr>
