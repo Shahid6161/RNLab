@@ -4,6 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { RouteProp, useRoute, useNavigation } from '@react-navigation/native';
 import { Heart, MessageCircle, Send, Bookmark, MoreHorizontal, ArrowLeft } from 'lucide-react-native';
 import { UiPost, FeedService, UiComment } from '../services/FeedService';
+import { useTheme } from '../features/theme/useTheme';
 
 type RootStackParamList = {
     PostDetails: { post: UiPost };
@@ -16,6 +17,7 @@ export default function PostDetailsScreen() {
     const navigation = useNavigation();
     const { post } = route.params;
     const insets = useSafeAreaInsets();
+    const { colorScheme } = useTheme();
 
     const [comments, setComments] = useState<UiComment[]>([]);
     const [loadingComments, setLoadingComments] = useState(true);
@@ -36,12 +38,12 @@ export default function PostDetailsScreen() {
     }, [navigation]);
 
     return (
-        <View style={styles.container}>
-            <View style={[styles.header, { paddingTop: insets.top + 10 }]}>
+        <View style={[styles.container, { backgroundColor: colorScheme.background }]}>
+            <View style={[styles.header, { paddingTop: insets.top + 10, borderBottomColor: colorScheme.border }]}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <ArrowLeft color="#000" size={24} />
+                    <ArrowLeft color={colorScheme.text} size={24} />
                 </TouchableOpacity>
-                <Text style={styles.headerTitle}>Post</Text>
+                <Text style={[styles.headerTitle, { color: colorScheme.text }]}>Post</Text>
                 <View style={{ width: 24 }} />
             </View>
 
@@ -49,9 +51,9 @@ export default function PostDetailsScreen() {
                 <View style={styles.userInfo}>
                     <View style={styles.userRow}>
                         <Image source={{ uri: post.userAvatar }} style={styles.avatar} />
-                        <Text style={styles.username}>{post.username}</Text>
+                        <Text style={[styles.username, { color: colorScheme.text }]}>{post.username}</Text>
                     </View>
-                    <MoreHorizontal color="#000" size={24} />
+                    <MoreHorizontal color={colorScheme.text} size={24} />
                 </View>
 
                 <Image
@@ -63,40 +65,40 @@ export default function PostDetailsScreen() {
                 <View style={styles.actions}>
                     <View style={styles.leftActions}>
                         <TouchableOpacity style={styles.actionIcon}>
-                            <Heart color="#000" size={24} />
+                            <Heart color={colorScheme.text} size={24} />
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.actionIcon}>
-                            <MessageCircle color="#000" size={24} />
+                            <MessageCircle color={colorScheme.text} size={24} />
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.actionIcon}>
-                            <Send color="#000" size={24} />
+                            <Send color={colorScheme.text} size={24} />
                         </TouchableOpacity>
                     </View>
                     <TouchableOpacity>
-                        <Bookmark color="#000" size={24} />
+                        <Bookmark color={colorScheme.text} size={24} />
                     </TouchableOpacity>
                 </View>
 
                 <View style={styles.likesSection}>
-                    <Text style={styles.likesText}>{post.likesString}</Text>
+                    <Text style={[styles.likesText, { color: colorScheme.text }]}>{post.likesString}</Text>
                 </View>
 
                 <View style={styles.captionSection}>
-                    <Text style={styles.captionText}>
+                    <Text style={[styles.captionText, { color: colorScheme.text }]}>
                         <Text style={styles.captionUsername}>{post.username}</Text> {post.caption}
                     </Text>
                     <Text style={styles.timeAgo}>{post.timeAgo}</Text>
                 </View>
 
-                <View style={styles.commentsSection}>
-                    <Text style={styles.commentsHeader}>Comments</Text>
+                <View style={[styles.commentsSection, { borderTopColor: colorScheme.border }]}>
+                    <Text style={[styles.commentsHeader, { color: colorScheme.text }]}>Comments</Text>
                     {loadingComments ? (
-                        <ActivityIndicator size="small" color="#000" style={{ marginTop: 20 }} />
+                        <ActivityIndicator size="small" color={colorScheme.text} style={{ marginTop: 20 }} />
                     ) : (
                         comments.map(comment => (
                             <View key={comment.id} style={styles.commentRow}>
                                 <View style={styles.commentContent}>
-                                    <Text style={styles.commentText}>
+                                    <Text style={[styles.commentText, { color: colorScheme.text }]}>
                                         <Text style={styles.commentUser}>{comment.user}</Text> {comment.text}
                                     </Text>
                                     <Text style={styles.commentTime}>{comment.time}</Text>
@@ -110,12 +112,12 @@ export default function PostDetailsScreen() {
                 </View>
             </ScrollView>
 
-            <View style={styles.commentInputContainer}>
+            <View style={[styles.commentInputContainer, { backgroundColor: colorScheme.background, borderTopColor: colorScheme.border }]}>
                 <Image source={{ uri: 'https://i.pravatar.cc/150?u=me' }} style={styles.inputAvatar} />
                 <TextInput
                     placeholder="Add a comment..."
                     placeholderTextColor="#666"
-                    style={styles.input}
+                    style={[styles.input, { color: colorScheme.text }]}
                 />
             </View>
         </View>
@@ -125,7 +127,6 @@ export default function PostDetailsScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
     },
     header: {
         flexDirection: 'row',
@@ -134,12 +135,10 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         paddingVertical: 10,
         borderBottomWidth: 0.5,
-        borderBottomColor: '#ddd',
     },
     headerTitle: {
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#000',
     },
     scrollContent: {
         paddingBottom: 80,
@@ -162,7 +161,6 @@ const styles = StyleSheet.create({
     },
     username: {
         fontWeight: 'bold',
-        color: '#000',
     },
     postImage: {
         width: '100%',
@@ -185,14 +183,12 @@ const styles = StyleSheet.create({
     },
     likesText: {
         fontWeight: 'bold',
-        color: '#000',
     },
     captionSection: {
         paddingHorizontal: 10,
         marginTop: 5,
     },
     captionText: {
-        color: '#000',
         lineHeight: 18,
     },
     captionUsername: {
@@ -208,13 +204,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         marginTop: 10,
         borderTopWidth: 0.5,
-        borderTopColor: '#efefef',
         paddingTop: 10,
     },
     commentsHeader: {
         fontWeight: 'bold',
         marginBottom: 10,
-        color: '#333',
     },
     commentRow: {
         flexDirection: 'row',
@@ -227,7 +221,6 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     commentText: {
-        color: '#000',
         lineHeight: 18,
     },
     commentUser: {
@@ -243,12 +236,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 10,
         borderTopWidth: 0.5,
-        borderTopColor: '#ddd',
         position: 'absolute',
         bottom: 0,
         left: 0,
         right: 0,
-        backgroundColor: '#fff',
         paddingBottom: 20, // Safe area
     },
     inputAvatar: {
