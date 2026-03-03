@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     },
     postImage: {
         width: '100%',
-        height: 400, // Fixed height or aspect ratio
+        height: 400,
     },
     actions: {
         flexDirection: 'row',
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
         bottom: 0,
         left: 0,
         right: 0,
-        paddingBottom: 20, // Safe area
+        paddingBottom: 20,
     },
     inputAvatar: {
         width: 32,

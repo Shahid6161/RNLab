@@ -28,10 +28,6 @@ export default function DrawerNavigator() {
                 options={{
                     title: 'Home',
                     drawerIcon: ({ color, size }) => (
-                        // create a dummy icon or import one if needed, but for now just text or default is fine
-                        // utilizing the existing lucide-react-native imports in project if needed, 
-                        // but to keep it simple I will just rely on text or default.
-                        // Actually, let's just keep simple options.
                         null
                     )
                 }}
