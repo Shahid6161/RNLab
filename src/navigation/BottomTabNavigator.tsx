@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Menu, Home, Search, Clapperboard, Heart, User } from 'lucide-react-native';
+import { Menu, Home, Search, Heart, User, SquarePlus } from 'lucide-react-native';
 import { TouchableOpacity } from 'react-native';
 import HomeStackNavigator from './HomeStackNavigator';
 import { PlaceholderScreen } from '../screens/PlaceholderScreen';
@@ -39,11 +39,17 @@ export default function BottomTabNavigator({ navigation }: any) {
                 }}
             />
             <Tab.Screen
-                name="Reels"
-                children={() => <PlaceholderScreen title="Reels" />}
+                name="CameraTab"
+                children={() => <PlaceholderScreen title="New Post" />}
                 options={{
-                    tabBarIcon: ({ color, size }) => <Clapperboard color={color} size={size} />,
+                    tabBarIcon: ({ color, size }) => <SquarePlus color={color} size={size} />,
                 }}
+                listeners={({ navigation }) => ({
+                    tabPress: (e) => {
+                        e.preventDefault();
+                        navigation.navigate('HomeTab', { screen: 'Camera' });
+                    },
+                })}
             />
             <Tab.Screen
                 name="Activity"

@@ -8,8 +8,10 @@ export const useFeed = () => {
     const { posts, loading, error } = useSelector((state: RootState) => state.feed);
 
     const loadPosts = useCallback(() => {
-        dispatch(fetchPosts());
-    }, [dispatch]);
+        if (posts.length === 0) {
+            dispatch(fetchPosts());
+        }
+    }, [dispatch, posts.length]);
 
     return { posts, loading, error, loadPosts };
 };

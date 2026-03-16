@@ -13,7 +13,6 @@ const initialState: FeedState = {
     error: null,
 };
 
-// Async thunk to fetch posts using the existing FeedService
 export const fetchPosts = createAsyncThunk(
     'feed/fetchPosts',
     async (_, { rejectWithValue }) => {
@@ -29,7 +28,11 @@ export const fetchPosts = createAsyncThunk(
 export const feedSlice = createSlice({
     name: 'feed',
     initialState,
-    reducers: {},
+    reducers: {
+        addPost: (state, action) => {
+            state.posts.unshift(action.payload);
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchPosts.pending, (state) => {
@@ -47,4 +50,5 @@ export const feedSlice = createSlice({
     },
 });
 
+export const { addPost } = feedSlice.actions;
 export default feedSlice.reducer;

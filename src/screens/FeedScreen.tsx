@@ -1,7 +1,8 @@
 import React, { useEffect, useCallback } from 'react';
-import { View, FlatList, StyleSheet, ActivityIndicator, TouchableOpacity, Text, SafeAreaView, ScrollView } from 'react-native';
+import { View, FlatList, StyleSheet, ActivityIndicator, TouchableOpacity, Text, ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { Heart, Send, Moon, Sun } from 'lucide-react-native';
+import { Heart, Send, Moon, Sun, Camera } from 'lucide-react-native';
 import { PostCard } from '../components/PostCard';
 import { StoryCircle } from '../components/StoryCircle';
 import { STORIES } from '../data/feedData';

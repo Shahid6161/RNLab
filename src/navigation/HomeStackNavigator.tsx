@@ -15,6 +15,22 @@ export default function HomeStackNavigator() {
                     headerShown: false
                 }}
             />
+            <Stack.Screen
+                name="Camera"
+                component={require('../screens/CameraScreen').default}
+                options={{
+                    headerShown: false,
+                    presentation: 'fullScreenModal'
+                }}
+            />
+            <Stack.Screen
+                name="CreatePost"
+                component={require('../screens/CreatePostScreen').default}
+                options={{
+                    headerShown: false,
+                    presentation: 'modal'
+                }}
+            />
         </Stack.Navigator>
     );
 }

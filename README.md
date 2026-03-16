@@ -8,7 +8,13 @@ See the project in action: [Watch Demo Video](https://drive.google.com/file/d/1x
 
 ## Features
 
-### 🔄 Week 3 Architecture & State (New!)
+### 📸 Week 4 Native Camera Integration (New!)
+- **Custom Camera View**: Integrated `react-native-vision-camera` for a fully custom, high-performance hardware camera.
+- **Seamless Navigation**: Replaced the default center tab with a dynamic iOS-style 'New Post' (plus) button that smoothly launches the camera as a full-screen modal.
+- **End-to-End Posting Flow**: Snap a photo, add a cohesive caption, and immediately dispatch the new post to the top of the Redux-managed feed.
+- **Native Permissions**: Handled native Android (`AndroidManifest.xml`) and iOS (`Info.plist`) camera and microphone access gracefully.
+
+### 🔄 Week 3 Architecture & State
 - **State Management**: Integrated `@reduxjs/toolkit` and `react-redux` for global state.
 - **Feature-Based Architecture**: Transitioned to a scalable folder structure (`src/features`, `src/store`).
 - **Custom Hooks**:
